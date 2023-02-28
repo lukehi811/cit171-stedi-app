@@ -6,6 +6,7 @@ import OnboardingScreen from './screens/OnboardingScreen';
 import Home from './screens/Home';
 import { NavigationContainer } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { fonts } from 'react-native-elements/dist/config';
 
 
 
@@ -26,7 +27,7 @@ const App = () =>{
 
   useEffect(()=>{//this is code that has to run before we show app screen
    const getSessionToken = async()=>{
-    const sessionToken = await AsyncStorage.getItem('sessionToken');
+    const sessionToken = null;// rawait AsyncStorage.getItem('sessionToken');
     console.log('sessionToken',sessionToken);
     const validateResponse = await fetch('https://dev.stedi.me/validate/'+sessionToken,
     {
@@ -56,6 +57,7 @@ return(
   } else if(loggedInState==loggedInStates.NOT_LOGGED_IN){
     return (
       <View>
+        <Text style={styles.title}>Welcome Back</Text>
         <TextInput 
           value={phoneNumber}
           onChangeText={setPhoneNumber}
@@ -143,7 +145,7 @@ return(
      },
      input: {
        height: 40,
-       marginTop: 100,
+       marginTop: 150,
        borderWidth: 1,
        padding: 10,
      },
@@ -154,5 +156,12 @@ return(
        alignItems: "center",
        backgroundColor: "#DDDDDD",
        padding: 10
-     }    
+     },
+     title:{
+      textAlign: "center",
+      marginTop: 75,
+      fontSize: 40,
+      color: '#FFD700',
+      fontWeight: 'bold'
+    }    
  })

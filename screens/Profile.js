@@ -22,7 +22,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 // labels
 // const horizontalData = ['S', 'M', 'T', 'W', 'T', 'F','S'];
 
-const Profile = (props) => {
+const Profile = (prop) => {
 
   const [userName, setUserName] = useState("");
   const[profilePhoto,setProfilePhoto] = useState(null);
@@ -100,6 +100,7 @@ elevation: 4}}>
 {/* <BarChart barColor='green' data={data} horizontalData={horizontalData} /> */}
      <View style={{ marginTop: 50 }}>
       <Button onPress={myCustomerShare} title="Share" />
+      <Button onPress={()=>{AsyncStorage.removeItem('sessionToken')}} title="Logout" />
     </View>
     </CardContent>
     </Card>
